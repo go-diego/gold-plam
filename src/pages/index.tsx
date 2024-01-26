@@ -10,12 +10,14 @@ export default function Home() {
       className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
     >
       <Head>
-            <meta property="og:title" content="Testing Video OG Previews" />
-    <meta property="og:description" content="Is this thing on???" />
-            <meta property="og:video" content="https://content.niftyisland.com/images/6678b109-397e-40d6-9591-325a21addec8.mp4"
- /><meta property="og:video:type" content="video/mp4" />
-    <meta property="og:video:width" content="350"/>
-    <meta property="og:video:height" content="200"/>
+        <meta property="og:title" content="Testing Video OG Previews" />
+        <meta property="og:description" content="Is this thing on???" />
+        <meta property="og:video" content="https://content.niftyisland.com/images/6678b109-397e-40d6-9591-325a21addec8.mp4"/>
+        <meta property="og:video:secure_url" content="https://content.niftyisland.com/images/6678b109-397e-40d6-9591-325a21addec8.mp4"/>
+        <meta property="og:video:type" content="video/mp4" />
+        <meta property="og:video:width" content="350"/>
+        <meta property="og:video:height" content="200"/>
+        <meta property="og:type" content="video"/>
       </Head>
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
         <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
@@ -52,7 +54,7 @@ export default function Home() {
           priority
         />
 
-        <video className="absolute top-0 left-0 w-full h-full object-cover rounded-full" autoPlay loop muted playsInline>
+        <video className="absolute top-0 left-0 w-full h-full object-cover rounded-full" height={300} width={300} autoPlay loop muted playsInline>
           <source src="https://content.niftyisland.com/images/6678b109-397e-40d6-9591-325a21addec8.mp4" type="video/mp4" />
         </video>
       </div>
