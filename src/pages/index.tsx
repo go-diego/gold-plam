@@ -13,7 +13,7 @@ export default function Home() {
             <meta property="og:title" content="Testing Video OG Previews" />
     <meta property="og:description" content="Is this thing on???" />
             <meta property="og:video" content="https://content.niftyisland.com/images/6678b109-397e-40d6-9591-325a21addec8.mp4"
- />
+ /><meta property="og:video:type" content="video/mp4" />
     <meta property="og:video:width" content="350"/>
     <meta property="og:video:height" content="200"/>
       </Head>
