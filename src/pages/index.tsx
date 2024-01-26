@@ -15,8 +15,6 @@ export default function Home() {
         <meta property="og:video" content="https://content.niftyisland.com/images/6678b109-397e-40d6-9591-325a21addec8.mp4"/>
         <meta property="og:video:secure_url" content="https://content.niftyisland.com/images/6678b109-397e-40d6-9591-325a21addec8.mp4"/>
         <meta property="og:video:type" content="video/mp4" />
-        <meta property="og:video:width" content="350"/>
-        <meta property="og:video:height" content="200"/>
         <meta property="og:type" content="video"/>
       </Head>
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
