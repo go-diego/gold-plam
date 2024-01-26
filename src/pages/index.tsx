@@ -51,6 +51,10 @@ export default function Home() {
           height={37}
           priority
         />
+
+        <video className="absolute top-0 left-0 w-full h-full object-cover rounded-full" autoPlay loop muted playsInline>
+          <source src="https://content.niftyisland.com/images/6678b109-397e-40d6-9591-325a21addec8.mp4" type="video/mp4" />
+        </video>
       </div>
 
       <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
