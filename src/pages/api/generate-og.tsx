@@ -1,9 +1,8 @@
 import {NextApiRequest, NextApiResponse} from 'next'
-import puppeteer, {Browser} from 'puppeteer'
+// import puppeteer, {Browser} from 'puppeteer'
+import puppeteer, {Browser} from 'puppeteer-core'
 import {renderToStaticMarkup} from 'react-dom/server'
-// import {config} from 'src/config'
-// import {getIslandFallbackImageUrl} from 'src/utils/getUrl'
-// import {getCssText} from '../../../stitches.config'
+import chromium from 'chrome-aws-lambda'
 
 const isDevelopment = process.env.NODE_ENV !== 'production'
 const baseUrl =
@@ -26,13 +25,17 @@ export default async function handler(
     res.status(400).send('Missing userProfileImgUrl')
     return
   }
+
+  console.log("CHROMIUM", await chromium.executablePath)
   try {
     browser = await puppeteer.launch({
       defaultViewport: {
         width: 500,
         height: 350,
       },
-      headless: 'new',
+      headless: chromium.headless,
+      executablePath: await chromium.executablePath ?? undefined,
+      args: chromium.args,
     })
 
     const page = await browser.newPage()
@@ -72,7 +75,10 @@ export default async function handler(
     )
     await page.setContent(html)
 
-    const screenshot = await page.screenshot()
+    const screenshot = await page.screenshot({
+      type: 'png',
+      encoding: 'binary',
+    })
 
     res.setHeader('Content-Type', 'image/png')
     res.setHeader('Cache-Control', 'private, max-age=3600')
