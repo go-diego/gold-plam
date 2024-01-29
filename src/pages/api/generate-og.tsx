@@ -1,14 +1,9 @@
 import {NextApiRequest, NextApiResponse} from 'next'
-// import puppeteer, {Browser} from 'puppeteer'
 import puppeteer, {Browser} from 'puppeteer-core'
 import {renderToStaticMarkup} from 'react-dom/server'
 import chromium from 'chrome-aws-lambda'
 
 const isDevelopment = process.env.NODE_ENV !== 'production'
-const baseUrl =
-  isDevelopment 
-    ? 'http://localhost:3001'
-    : "https://golden-plam.vercel.app"
 
 export default async function handler(
   req: NextApiRequest,
@@ -82,7 +77,8 @@ export default async function handler(
 
     res.setHeader('Content-Type', 'image/png')
     res.setHeader('Cache-Control', 'private, max-age=3600')
-    res.send(screenshot)
+    res.write(screenshot)
+    res.end()
   } catch (error) {
     console.error(error)
     res.status(500).send('Error occurred while generating screenshot')
