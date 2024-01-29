@@ -39,7 +39,7 @@ export default async function handler(
   console.log("DEFAULT_EXECUTABLE_PATH", DEFAULT_EXECUTABLE_PATH)
   try {
     const executablePath = await chromium.executablePath ?? DEFAULT_EXECUTABLE_PATH
-    browser = await puppeteer.launch({
+    browser = await chromium.puppeteer.launch({
       defaultViewport: {
         width: 500,
         height: 350,

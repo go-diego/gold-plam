@@ -13,10 +13,10 @@ export default function ModelTest() {
         <meta property="og:description" content="Is this thing on???" />
 
         {/* og image */}
-        <meta property="og:image" content="https://niftyisland.com/assets/pub/img/ni-preview.png"/>
+        {/* <meta property="og:image" content="https://niftyisland.com/assets/pub/img/ni-preview.png"/> */}
 
         {/* twitter image */}
-        <meta name="twitter:image" content="https://niftyisland.com/assets/pub/img/ni-preview.png"/>
+        {/* <meta name="twitter:image" content="https://niftyisland.com/assets/pub/img/ni-preview.png"/> */}
 
         {/* og video */}
         <meta property="og:video" content="https://content.niftyisland.com/images/6678b109-397e-40d6-9591-325a21addec8.mp4"/>
