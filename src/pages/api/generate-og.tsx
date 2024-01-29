@@ -86,9 +86,5 @@ export default async function handler(
   } catch (error) {
     console.error(error)
     res.status(500).send('Error occurred while generating screenshot')
-  } finally {
-    if (browser) {
-      await browser.close()
-    }
-  }
+  } 
 }
