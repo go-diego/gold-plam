@@ -24,7 +24,7 @@ export default function ModelTest() {
         <meta property="og:type" content="video"/>
 
         {/* twitter player */}
-        <meta name="twitter:player" content="https://drops.niftyisland.com/palm/gold_model.fbx&amp;poster=https://niftyisland.com/assets/pub/img/ni-preview.png"/>
+        {/* <meta name="twitter:player" content="https://drops.niftyisland.com/palm/gold_model.fbx&amp;poster=https://niftyisland.com/assets/pub/img/ni-preview.png"/> */}
       </Head>
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
         <h1>Model Test</h1>
