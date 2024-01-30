@@ -9,16 +9,48 @@ export default function ModelTest() {
       className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
     >
       <Head>
-        <meta property="og:title" content="Testing Video OG Previews" />
-        <meta property="og:description" content="Is this thing on???" />
-
-        {/* og image */}
+        <title>Garden Shrine - Nifty Island Bloom Rewards | Nifty Island</title>
+        <meta
+          name="description"
+          content="View Garden Shrine and other assets from Nifty Island Bloom Rewards on NiftyIsland.com, an NFT marketplace for custom, user-generated content for the Nifty Island game."
+        />
+        <link
+          rel="canonical"
+          href="https://niftyisland.com/item/ethereum/0xfd72ba1944dd7b7e5829e33aa92dd7a149919f65/7"
+        />
+        <meta
+          property="og:title"
+          content="Garden Shrine - Nifty Island Bloom Rewards"
+        />
+        <meta
+          property="og:description"
+          content="View Garden Shrine and other assets from Nifty Island Bloom Rewards on NiftyIsland.com, an NFT marketplace for custom, user-generated content for the Nifty Island game."
+        />
+        <meta property="og:site_name" content="Nifty Island" />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:url"
+          content="https://niftyisland.com/item/ethereum/0xfd72ba1944dd7b7e5829e33aa92dd7a149919f65/7"
+        />
         <meta
           property="og:image"
           content="https://niftyisland.com/assets/pub/img/ni-preview.png"
         />
-
-        {/* twitter image */}
+        <meta
+          name="twitter:description"
+          content="View Garden Shrine and other assets from Nifty Island Bloom Rewards on NiftyIsland.com, an NFT marketplace for custom, user-generated content for the Nifty Island game."
+        />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta property="twitter:creator" content="Nifty Island" />
+        <meta property="twitter:domain" content="niftyisland.com" />
+        <meta
+          property="twitter:url"
+          content="https://niftyisland.com/item/ethereum/0xfd72ba1944dd7b7e5829e33aa92dd7a149919f65/7"
+        />
+        <meta
+          property="twitter:title"
+          content="Garden Shrine - Nifty Island Bloom Rewards"
+        />
         <meta
           name="twitter:image"
           content="https://niftyisland.com/assets/pub/img/ni-preview.png"
@@ -27,11 +59,11 @@ export default function ModelTest() {
         {/* og video */}
         <meta
           property="og:video"
-          content="https://content.niftyisland.com/images/6678b109-397e-40d6-9591-325a21addec8.mp4"
+          content="https://content.niftyisland.com/images/9ae010a3-d676-4c28-bdd9-46d881e4b3de.mp4"
         />
         <meta
           property="og:video:secure_url"
-          content="https://content.niftyisland.com/images/6678b109-397e-40d6-9591-325a21addec8.mp4"
+          content="https://content.niftyisland.com/images/9ae010a3-d676-4c28-bdd9-46d881e4b3de.mp4"
         />
         <meta property="og:type" content="video" />
 
