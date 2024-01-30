@@ -13,10 +13,16 @@ export default function ModelTest() {
         <meta property="og:description" content="Is this thing on???" />
 
         {/* og image */}
-        {/* <meta property="og:image" content="https://niftyisland.com/assets/pub/img/ni-preview.png"/> */}
+        <meta
+          property="og:image"
+          content="https://niftyisland.com/assets/pub/img/ni-preview.png"
+        />
 
         {/* twitter image */}
-        {/* <meta name="twitter:image" content="https://niftyisland.com/assets/pub/img/ni-preview.png"/> */}
+        <meta
+          name="twitter:image"
+          content="https://niftyisland.com/assets/pub/img/ni-preview.png"
+        />
 
         {/* og video */}
         <meta
@@ -30,13 +36,12 @@ export default function ModelTest() {
         <meta property="og:type" content="video" />
 
         {/* twitter player */}
-        <meta
+        {/* <meta
           name="twitter:player"
           content="https://gold-plam.vercel.app/twitter-player.html?src=https://content.niftyisland.com/nftables/ba0549aa-05d8-458b-9c91-d2167ea2820f/v/1/source.fbx&poster=https://niftyisland.com/assets/pub/img/ni-preview.png"
         />
         <meta name="twitter:player:width" content="480" />
-        <meta name="twitter:player:height" content="480" />
-        {/* <meta name="twitter" */}
+        <meta name="twitter:player:height" content="480" /> */}
       </Head>
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
         <h1>Model Test</h1>
