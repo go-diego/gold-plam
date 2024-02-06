@@ -19,10 +19,13 @@ export default async function handler(
   }
 
   if (!IS_LOCAL) {
-    console.log('SET FONT')
-    await chromium.font(
-      'https://raw.githack.com/googlei18n/noto-emoji/master/fonts/NotoColorEmoji.ttf',
-    )
+    try {
+      await chromium.font(
+        'https://raw.githack.com/googlei18n/noto-emoji/master/fonts/NotoColorEmoji.ttf',
+      )
+    } catch (e) {
+      console.error('Set font url error', e)
+    }
   }
 
   const executablePath = IS_LOCAL
