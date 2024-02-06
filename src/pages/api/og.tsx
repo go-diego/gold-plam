@@ -18,16 +18,16 @@ export default async function handler(
     return
   }
 
-  // if (!IS_LOCAL) {
-  await chromium.font(
-    'https://raw.githack.com/googlei18n/noto-emoji/master/fonts/NotoColorEmoji.ttf',
-  )
-  // }
+  // await chromium.font(
+  //   'https://raw.githack.com/googlei18n/noto-emoji/master/fonts/NotoColorEmoji.ttf',
+  // )
   const executablePath = IS_LOCAL
     ? devPuppeteer.executablePath()
     : await chromium.executablePath(
         'https://github.com/Sparticuz/chromium/releases/download/v116.0.0/chromium-v116.0.0-pack.tar',
       )
+
+  console.log('executablePath', executablePath)
 
   try {
     const islandData = await fetch(
