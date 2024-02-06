@@ -18,13 +18,16 @@ export default async function handler(
     return
   }
 
+  if (!IS_LOCAL) {
+    await chromium.font(
+      'https://github.com/Sparticuz/chromium/releases/download/v116.0.0/chromium-v116.0.0-pack.tar',
+    )
+  }
   const executablePath = IS_LOCAL
     ? devPuppeteer.executablePath()
     : await chromium.executablePath(
         'https://github.com/Sparticuz/chromium/releases/download/v116.0.0/chromium-v116.0.0-pack.tar',
       )
-
-  console.log('executablePath', executablePath)
 
   try {
     const islandData = await fetch(
@@ -35,6 +38,10 @@ export default async function handler(
       res.status(404).send('Island not found')
       return
     }
+
+    chromium.setGraphicsMode = false
+
+    console.log('chromium', chromium)
 
     browser = await puppeteer.launch({
       args: IS_LOCAL ? puppeteer.defaultArgs() : chromium.args,
