@@ -27,6 +27,7 @@ export default async function handler(
         'https://github.com/Sparticuz/chromium/releases/download/v116.0.0/chromium-v116.0.0-pack.tar',
       )
 
+  console.log('process.env.NODE_ENV', process.env.NODE_ENV)
   console.log('executablePath', executablePath)
 
   try {
