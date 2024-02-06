@@ -7,17 +7,20 @@
 // const isDevelopment = process.env.NODE_ENV !== 'production'
 
 // let DEFAULT_EXECUTABLE_PATH: string | null = null
-//   if (process.platform === 'win32') {
-//     if (['arm64', 'ppc64', 'x64', 's390x'].includes(os.arch())) {
-//       DEFAULT_EXECUTABLE_PATH = 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe'
-//     } else {
-//       DEFAULT_EXECUTABLE_PATH = 'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe'
-//     }
-//   } else if (process.platform === 'linux') {
-//     DEFAULT_EXECUTABLE_PATH = '/usr/bin/google-chrome'
+// if (process.platform === 'win32') {
+//   if (['arm64', 'ppc64', 'x64', 's390x'].includes(os.arch())) {
+//     DEFAULT_EXECUTABLE_PATH =
+//       'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe'
 //   } else {
-//     DEFAULT_EXECUTABLE_PATH = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
+//     DEFAULT_EXECUTABLE_PATH =
+//       'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe'
 //   }
+// } else if (process.platform === 'linux') {
+//   DEFAULT_EXECUTABLE_PATH = '/usr/bin/google-chrome'
+// } else {
+//   DEFAULT_EXECUTABLE_PATH =
+//     '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
+// }
 
 // export default async function handler(
 //   req: NextApiRequest,
@@ -35,10 +38,11 @@
 //     return
 //   }
 
-//   console.log("CHROMIUM", await chromium.executablePath)
-//   console.log("DEFAULT_EXECUTABLE_PATH", DEFAULT_EXECUTABLE_PATH)
+//   console.log('CHROMIUM', await chromium.executablePath)
+//   console.log('DEFAULT_EXECUTABLE_PATH', DEFAULT_EXECUTABLE_PATH)
 //   try {
-//     const executablePath = await chromium.executablePath ?? DEFAULT_EXECUTABLE_PATH
+//     const executablePath =
+//       (await chromium.executablePath) ?? DEFAULT_EXECUTABLE_PATH
 //     browser = await chromium.puppeteer.launch({
 //       defaultViewport: {
 //         width: 500,
@@ -81,7 +85,12 @@
 //           src={userProfileImgUrl as string}
 //         />
 //         {/* eslint-disable react/react-in-jsx-scope  */}
-//         <img alt="" width={350} height={350} src={"https://gold-plam.vercel.app/vercel.svg"} />
+//         <img
+//           alt=""
+//           width={350}
+//           height={350}
+//           src={'https://gold-plam.vercel.app/vercel.svg'}
+//         />
 //       </main>,
 //     )
 //     await page.setContent(html)
