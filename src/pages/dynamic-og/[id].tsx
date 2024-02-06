@@ -25,45 +25,9 @@ export default function DynamicOG() {
         {/* twitter image */}
         <meta name="twitter:image" content={ogImage} />
       </Head>
-      <div
-        style={{
-          width: '100%',
-          height: '100vh',
-          flexDirection: 'column',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          position: 'absolute',
-        }}
-        className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex"
-      >
+      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
         <h1>Dynamic OG Test</h1>
-
-        <img
-          alt=""
-          style={{
-            borderRadius: '50%',
-            right: '0.5rem',
-            top: '0.5rem',
-            position: 'absolute',
-          }}
-          width={56}
-          height={56}
-          src={islandData?.owner?.imageProfile?.sourceUrl}
-        />
-        <img
-          alt=""
-          width={350}
-          height={350}
-          src={islandData?.selectedLoadout?.imagePreview?.sourceUrl}
-        />
       </div>
     </main>
   )
-}
-
-export async function getServerSideProps() {
-  return {
-    props: {},
-  }
 }
