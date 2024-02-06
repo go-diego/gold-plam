@@ -1,6 +1,6 @@
 import {NextApiRequest, NextApiResponse} from 'next'
 import puppeteer, {Browser} from 'puppeteer-core'
-import devPuppeteer from 'puppeteer'
+// import devPuppeteer from 'puppeteer'
 import {renderToStaticMarkup} from 'react-dom/server'
 import chromium from '@sparticuz/chromium-min'
 
@@ -18,25 +18,6 @@ export default async function handler(
     return
   }
 
-  if (!IS_LOCAL) {
-    try {
-      await chromium.font(
-        'https://raw.githack.com/googlei18n/noto-emoji/master/fonts/NotoColorEmoji.ttf',
-      )
-    } catch (e) {
-      console.error('Set font url error', e)
-    }
-  }
-
-  const executablePath = IS_LOCAL
-    ? devPuppeteer.executablePath()
-    : await chromium.executablePath(
-        'https://github.com/Sparticuz/chromium/releases/download/v116.0.0/chromium-v116.0.0-pack.tar',
-      )
-
-  console.log('process.env.NODE_ENV', process.env.NODE_ENV)
-  console.log('executablePath', executablePath)
-
   try {
     const islandData = await fetch(
       `https://api.niftyisland.com/api/islands/${islandId}/preview`,
@@ -47,10 +28,26 @@ export default async function handler(
       return
     }
 
+    // const executablePath = IS_LOCAL
+    //   ? devPuppeteer.executablePath()
+    //   : await chromium.executablePath(
+    //       'https://github.com/Sparticuz/chromium/releases/download/v116.0.0/chromium-v116.0.0-pack.tar',
+    //     )
+
+    const executablePath = await chromium.executablePath(
+      'https://github.com/Sparticuz/chromium/releases/download/v116.0.0/chromium-v116.0.0-pack.tar',
+    )
+
+    const args = IS_LOCAL ? puppeteer.defaultArgs() : chromium.args
+
+    console.log('process.env.NODE_ENV', process.env.NODE_ENV)
+    console.log('executablePath', executablePath)
+    console.log('args', args)
+
     chromium.setGraphicsMode = false
 
     browser = await puppeteer.launch({
-      args: IS_LOCAL ? puppeteer.defaultArgs() : chromium.args,
+      args,
       defaultViewport: {
         width: 500,
         height: 350,
