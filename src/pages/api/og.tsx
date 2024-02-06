@@ -18,11 +18,11 @@ export default async function handler(
     return
   }
 
-  if (!IS_LOCAL) {
-    await chromium.font(
-      'https://github.com/Sparticuz/chromium/releases/download/v116.0.0/chromium-v116.0.0-pack.tar',
-    )
-  }
+  // if (!IS_LOCAL) {
+  await chromium.font(
+    'https://raw.githack.com/googlei18n/noto-emoji/master/fonts/NotoColorEmoji.ttf',
+  )
+  // }
   const executablePath = IS_LOCAL
     ? devPuppeteer.executablePath()
     : await chromium.executablePath(
@@ -40,8 +40,6 @@ export default async function handler(
     }
 
     chromium.setGraphicsMode = false
-
-    console.log('chromium', chromium)
 
     browser = await puppeteer.launch({
       args: IS_LOCAL ? puppeteer.defaultArgs() : chromium.args,
