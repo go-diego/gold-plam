@@ -31,13 +31,18 @@ export default async function handler(
       `https://api.niftyisland.com/api/islands/${islandId}/preview`,
     ).then((res) => res.json())
 
+    if (!islandData) {
+      res.status(404).send('Island not found')
+      return
+    }
+
     browser = await puppeteer.launch({
       args: IS_LOCAL ? puppeteer.defaultArgs() : chromium.args,
       defaultViewport: {
         width: 500,
         height: 350,
       },
-      headless: chromium.headless,
+      headless: true,
       executablePath,
       ignoreHTTPSErrors: IS_LOCAL ? false : true,
     })
@@ -49,15 +54,15 @@ export default async function handler(
       <main
         style={{
           backgroundColor: 'hsl(204 96% 54%)',
+          boxSizing: 'border-box',
           width: '100%',
           height: '100vh',
-          flexDirection: 'column',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          position: 'absolute',
+          position: 'relative',
+          margin: 0,
+          padding: 0,
         }}
       >
+        <style>{`body { margin: 0; padding: 0; }`}</style>
         {/* eslint-disable react/react-in-jsx-scope  */}
         <img
           alt=""
@@ -66,6 +71,7 @@ export default async function handler(
             right: '0.5rem',
             top: '0.5rem',
             position: 'absolute',
+            zIndex: 5,
           }}
           width={56}
           height={56}
@@ -74,8 +80,17 @@ export default async function handler(
         {/* eslint-disable react/react-in-jsx-scope  */}
         <img
           alt=""
-          width={350}
-          height={350}
+          // width={350}
+          // height={350}
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            display: 'block', // Ensure there's no extra space under the image
+            position: 'absolute', // Assuming you want it positioned absolutely
+            top: 0, // Adjust accordingly
+            left: 0, // Adjust accordingly
+          }}
           src={islandData?.selectedLoadout?.imagePreview?.sourceUrl}
         />
       </main>,

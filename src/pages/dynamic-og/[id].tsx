@@ -7,7 +7,9 @@ const inter = Inter({subsets: ['latin']})
 
 export default function DynamicOG() {
   const router = useRouter()
-  const ogImage = router.query.id ? `/api/og?islandId=${router.query.id}` : null
+  const ogImage = router.query.id
+    ? `/api/og?islandId=${router.query.id}`
+    : undefined
 
   return (
     <main
@@ -23,8 +25,38 @@ export default function DynamicOG() {
         {/* twitter image */}
         <meta name="twitter:image" content={ogImage} />
       </Head>
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
+      <div
+        style={{
+          width: '100%',
+          height: '100vh',
+          flexDirection: 'column',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          position: 'absolute',
+        }}
+        className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex"
+      >
         <h1>Dynamic OG Test</h1>
+
+        <img
+          alt=""
+          style={{
+            borderRadius: '50%',
+            right: '0.5rem',
+            top: '0.5rem',
+            position: 'absolute',
+          }}
+          width={56}
+          height={56}
+          src={islandData?.owner?.imageProfile?.sourceUrl}
+        />
+        <img
+          alt=""
+          width={350}
+          height={350}
+          src={islandData?.selectedLoadout?.imagePreview?.sourceUrl}
+        />
       </div>
     </main>
   )
