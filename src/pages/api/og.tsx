@@ -34,10 +34,6 @@ export default async function handler(
           'https://github.com/Sparticuz/chromium/releases/download/v121.0.0/chromium-v121.0.0-pack.tar',
         )
 
-    // const executablePath = await chromium.executablePath(
-    //   'https://github.com/Sparticuz/chromium/releases/download/v110.0.1/chromium-v110.0.1-pack.tar',
-    // )
-
     const args = IS_LOCAL ? puppeteer.defaultArgs() : chromium.args
 
     console.log('process.env.NODE_ENV', process.env.NODE_ENV)
@@ -89,8 +85,6 @@ export default async function handler(
         {/* eslint-disable react/react-in-jsx-scope  */}
         <img
           alt=""
-          // width={350}
-          // height={350}
           style={{
             width: '100%',
             height: '100%',
@@ -113,8 +107,7 @@ export default async function handler(
 
     res.setHeader('Content-Type', 'image/png')
     res.setHeader('Cache-Control', 'private, max-age=3600')
-    res.write(screenshot)
-    res.end()
+    res.status(200).end(screenshot)
   } catch (error) {
     console.error(error)
     res.status(500).send('Error occurred while generating screenshot')
@@ -124,58 +117,3 @@ export default async function handler(
     }
   }
 }
-
-// import {withOGImage} from 'next-api-og-image'
-
-// export default withOGImage<
-//   'query',
-//   {
-//     islandId: string
-//     userProfileImgUrl: string
-//   }
-// >({
-//   template: {
-//     react: async ({islandId, userProfileImgUrl}) => {
-//       return (
-//         <main
-//           style={{
-//             backgroundColor: 'hsl(204 96% 54%)',
-//             width: '100%',
-//             height: '100vh',
-//             flexDirection: 'column',
-//             display: 'flex',
-//             justifyContent: 'center',
-//             alignItems: 'center',
-//             position: 'absolute',
-//           }}
-//         >
-//           {/* eslint-disable react/react-in-jsx-scope  */}
-
-//           {/* eslint-disable react/react-in-jsx-scope  */}
-//           <img
-//             alt=""
-//             style={{
-//               borderRadius: '50%',
-//               right: '0.5rem',
-//               top: '0.5rem',
-//               position: 'absolute',
-//             }}
-//             width={56}
-//             height={56}
-//             src={userProfileImgUrl as string}
-//           />
-//           {/* eslint-disable react/react-in-jsx-scope  */}
-//           <img
-//             alt=""
-//             width={350}
-//             height={350}
-//             src={'https://gold-plam.vercel.app/vercel.svg'}
-//           />
-//         </main>
-//       )
-//     },
-//   },
-//   dev: {
-//     inspectHtml: false,
-//   },
-// })

@@ -8,7 +8,7 @@ const inter = Inter({subsets: ['latin']})
 export default function DynamicOG() {
   const router = useRouter()
   const ogImage = router.query.id
-    ? `/api/og?islandId=${router.query.id}`
+    ? `https://gold-plam.vercel.app/api/og?islandId=${router.query.id}`
     : undefined
 
   return (
