@@ -89,10 +89,10 @@ export default async function handler(
             width: '100%',
             height: '100%',
             objectFit: 'cover',
-            display: 'block', // Ensure there's no extra space under the image
-            position: 'absolute', // Assuming you want it positioned absolutely
-            top: 0, // Adjust accordingly
-            left: 0, // Adjust accordingly
+            display: 'block',
+            position: 'absolute',
+            top: 0,
+            left: 0,
           }}
           src={islandData?.selectedLoadout?.imagePreview?.sourceUrl}
         />

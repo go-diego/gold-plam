@@ -35,7 +35,5 @@ export const getServerSideProps: GetServerSideProps<{
     ? `https://gold-plam.vercel.app/api/og?islandId=${id}`
     : undefined
 
-  await fetch(`https://gold-plam.vercel.app/api/og?islandId=${id}`)
-
   return {props: {ogImage}}
 }
