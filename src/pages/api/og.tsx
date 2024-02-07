@@ -106,7 +106,7 @@ export default async function handler(
     })
 
     res.setHeader('Content-Type', 'image/png')
-    res.setHeader('Cache-Control', 'private, max-age=3600')
+    res.setHeader('Cache-Control', 'public, max-age=60, no-transform')
     res.status(200).end(screenshot)
   } catch (error) {
     console.error(error)
