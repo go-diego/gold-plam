@@ -1,16 +1,11 @@
 import React from 'react'
+import {GetServerSideProps} from 'next'
 import {Inter} from 'next/font/google'
 import Head from 'next/head'
-import {useRouter} from 'next/router'
 
 const inter = Inter({subsets: ['latin']})
 
-export default function DynamicOG() {
-  const router = useRouter()
-  const ogImage = router.query.id
-    ? `https://gold-plam.vercel.app/api/og?islandId=${router.query.id}`
-    : undefined
-
+export default function DynamicOG({ogImage}: {ogImage?: string}) {
   return (
     <main
       className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
@@ -30,4 +25,15 @@ export default function DynamicOG() {
       </div>
     </main>
   )
+}
+
+export const getServerSideProps: GetServerSideProps<{
+  ogImage?: string
+}> = async (context) => {
+  const {id} = context.query
+  const ogImage = id
+    ? `https://gold-plam.vercel.app/api/og?islandId=${id}`
+    : undefined
+
+  return {props: {ogImage}}
 }
