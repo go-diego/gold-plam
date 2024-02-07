@@ -39,7 +39,7 @@ export const getServerSideProps: GetServerSideProps<{
     return {notFound: true}
   }
   const ogImage = id
-    ? `https://gold-plam.vercel.app/api/og?islandImg=${id}&ownerImg=${id}`
+    ? `https://gold-plam.vercel.app/api/og?islandImg=${islandData.selectedLoadout.imagePreview.sourceUrl}&ownerImg=${islandData.owner.imageProfile.sourceUrl}`
     : undefined
 
   return {props: {ogImage}}
