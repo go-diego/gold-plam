@@ -1,6 +1,6 @@
 import {NextApiRequest, NextApiResponse} from 'next'
 import puppeteer, {Browser} from 'puppeteer-core'
-// import devPuppeteer from 'puppeteer'
+import devPuppeteer from 'puppeteer'
 import {renderToStaticMarkup} from 'react-dom/server'
 import chromium from '@sparticuz/chromium-min'
 
@@ -28,21 +28,20 @@ export default async function handler(
       return
     }
 
-    // const executablePath = IS_LOCAL
-    //   ? devPuppeteer.executablePath()
-    //   : await chromium.executablePath(
-    //       'https://github.com/Sparticuz/chromium/releases/download/v116.0.0/chromium-v116.0.0-pack.tar',
-    //     )
+    const executablePath = IS_LOCAL
+      ? devPuppeteer.executablePath()
+      : await chromium.executablePath(
+          'https://github.com/Sparticuz/chromium/releases/download/v121.0.0/chromium-v121.0.0-pack.tar',
+        )
 
-    const executablePath = await chromium.executablePath(
-      'https://github.com/Sparticuz/chromium/releases/download/v116.0.0/chromium-v116.0.0-pack.tar',
-    )
+    // const executablePath = await chromium.executablePath(
+    //   'https://github.com/Sparticuz/chromium/releases/download/v110.0.1/chromium-v110.0.1-pack.tar',
+    // )
 
     const args = IS_LOCAL ? puppeteer.defaultArgs() : chromium.args
 
     console.log('process.env.NODE_ENV', process.env.NODE_ENV)
     console.log('executablePath', executablePath)
-    console.log('args', args)
 
     chromium.setGraphicsMode = false
 
@@ -52,7 +51,7 @@ export default async function handler(
         width: 500,
         height: 350,
       },
-      headless: true,
+      headless: chromium.headless,
       executablePath,
       ignoreHTTPSErrors: IS_LOCAL ? false : true,
     })
