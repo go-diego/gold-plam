@@ -11,22 +11,29 @@ export default async function handler(
   res: NextApiResponse,
 ) {
   let browser: Browser | null = null
-  const {islandId} = req.query
+  const {islandImg, ownerImg} = req.query as {
+    islandImg?: string
+    ownerImg?: string
+  }
 
-  if (!islandId) {
-    res.status(400).send('Missing islandId')
+  if (!islandImg) {
+    res.status(400).send('Missing islandImg')
+    return
+  }
+  if (!ownerImg) {
+    res.status(400).send('Missing ownerImage')
     return
   }
 
   try {
-    const islandData = await fetch(
-      `https://api.niftyisland.com/api/islands/${islandId}/preview`,
-    ).then((res) => res.json())
+    // const islandData = await fetch(
+    //   `https://api.niftyisland.com/api/islands/${islandId}/preview`,
+    // ).then((res) => res.json())
 
-    if (!islandData) {
-      res.status(404).send('Island not found')
-      return
-    }
+    // if (!islandData) {
+    //   res.status(404).send('Island not found')
+    //   return
+    // }
 
     const executablePath = IS_LOCAL
       ? devPuppeteer.executablePath()
@@ -80,7 +87,7 @@ export default async function handler(
           }}
           width={56}
           height={56}
-          src={islandData?.owner?.imageProfile?.sourceUrl}
+          src={islandImg}
         />
         {/* eslint-disable react/react-in-jsx-scope  */}
         <img
@@ -94,7 +101,7 @@ export default async function handler(
             top: 0, // Adjust accordingly
             left: 0, // Adjust accordingly
           }}
-          src={islandData?.selectedLoadout?.imagePreview?.sourceUrl}
+          src={ownerImg}
         />
       </main>,
     )
