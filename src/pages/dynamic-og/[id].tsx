@@ -31,16 +31,11 @@ export const getServerSideProps: GetServerSideProps<{
   ogImage?: string
 }> = async (context) => {
   const {id} = context.query
-  const islandData = await fetch(
-    `https://api.niftyisland.com/api/islands/${id}/preview`,
-  ).then((res) => res.json())
-
-  if (!islandData) {
-    return {notFound: true}
-  }
   const ogImage = id
-    ? `https://gold-plam.vercel.app/api/og?islandImg=${islandData.selectedLoadout.imagePreview.sourceUrl}&ownerImg=${islandData.owner.imageProfile.sourceUrl}`
+    ? `https://gold-plam.vercel.app/api/og?islandId=${id}`
     : undefined
+
+  await fetch(`https://gold-plam.vercel.app/api/og?islandId=${id}`)
 
   return {props: {ogImage}}
 }
