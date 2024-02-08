@@ -44,8 +44,8 @@ export default async function handler(
     browser = await puppeteer.launch({
       args,
       defaultViewport: {
-        width: 500,
-        height: 350,
+        width: 1200,
+        height: 630,
       },
       headless: chromium.headless,
       executablePath,
@@ -73,13 +73,13 @@ export default async function handler(
           alt=""
           style={{
             borderRadius: '50%',
-            right: '0.5rem',
-            top: '0.5rem',
+            right: '1rem',
+            top: '1rem',
             position: 'absolute',
             zIndex: 5,
           }}
-          width={56}
-          height={56}
+          width={100}
+          height={100}
           src={islandData?.owner?.imageProfile?.sourceUrl}
         />
         {/* eslint-disable react/react-in-jsx-scope  */}
@@ -96,6 +96,41 @@ export default async function handler(
           }}
           src={islandData?.selectedLoadout?.imagePreview?.sourceUrl}
         />
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            gap: '5rem',
+            zIndex: 5,
+            position: 'absolute',
+            width: '100%',
+            bottom: '1rem',
+            fontSize: '2rem',
+            fontWeight: 'bolder',
+            color: 'white',
+          }}
+        >
+          <div
+            style={{
+              display: 'flex',
+              gap: '1rem',
+              alignItems: 'center',
+            }}
+          >
+            <span
+              style={{
+                backgroundColor:
+                  islandData.playerCount > 0 ? 'hsl(135, 80%, 60%)' : 'gray',
+                height: '1rem',
+                width: '1rem',
+                borderRadius: '50%',
+              }}
+            ></span>
+            <span>{islandData.playerCount} online</span>
+          </div>
+          <span>{islandData.favoritedCount} favorites</span>
+        </div>
       </main>,
     )
     await page.setContent(html)
