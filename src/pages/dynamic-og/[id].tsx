@@ -18,6 +18,11 @@ export default function DynamicOG({ogImage}: {ogImage?: string}) {
         <meta property="og:image" content={ogImage} />
 
         {/* twitter image */}
+        <meta
+          name="twitter:card"
+          content="summary_large_image"
+          key="twitter-card"
+        />
         <meta name="twitter:image" content={ogImage} />
       </Head>
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
