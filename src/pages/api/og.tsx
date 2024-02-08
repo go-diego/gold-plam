@@ -107,7 +107,8 @@ export default async function handler(
 
     res.setHeader('Content-Type', 'image/png')
     res.setHeader('Cache-Control', 'public, max-age=60, no-transform')
-    res.status(200).end(screenshot)
+    res.status(200).write(screenshot)
+    res.end()
   } catch (error) {
     console.error(error)
     res.status(500).send('Error occurred while generating screenshot')
